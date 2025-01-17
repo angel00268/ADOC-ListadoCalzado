@@ -26,7 +26,28 @@ interface Product {
 
 const paginationModel = { page: 0, pageSize: 5 };
 
-const colors: string[] = ['Rojo', 'Azul', 'Cafe', 'Blanco', 'Negro'];
+const colors = [
+	{
+		label: 'Rojo',
+		color: 'red'
+	},
+	{
+		label: 'Azul',
+		color: 'blue'
+	},
+	{
+		label: 'Cafe',
+		color: 'brown'
+	},
+	{
+		label: 'Blanco',
+		color: 'gray'
+	},
+	{
+		label: 'Negro',
+		color: 'black'
+	},
+];
 const sizes: number[] = [5, 6, 7, 8, 9, 10];
 
 function App() {
@@ -215,7 +236,11 @@ function App() {
 									<FormGroup sx={{ marginLeft: 5 }}>
 										{
 											colors.map((color) => (
-												<FormControlLabel key={color} control={<Checkbox value={color} onChange={() => handleColorCheckboxChange(color)} />} label={color} />
+												<FormControlLabel key={color.label} control={<Checkbox value={color.label} sx={{
+													color: `${color.color}`, '&.Mui-checked': {
+														color: `${color.color}`,
+													},
+												}} onChange={() => handleColorCheckboxChange(color.label)} />} label={color.label} />
 											))
 										}
 									</FormGroup>
